@@ -5,6 +5,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import HumanMessage, AIMessage
+from langchain_core.runnables import RunnablePassthrough
+
 from utils import llm, tools
 
 SYSTEM_PROMPT = """
@@ -29,21 +31,17 @@ def create_chat_agent():
     """Create a simple chat agent using LangChain LCEL"""
     from langchain_core.runnables import RunnablePassthrough
     
-    # Create a simple chain that uses the LLM with tools context
     prompt = ChatPromptTemplate.from_messages([
         ("system", SYSTEM_PROMPT),
         ("human", "{input}")
     ])
     
-    # Create the chain: prompt -> llm
     agent_chain = prompt | llm
-    
     return agent_chain
+
 
 if __name__ == "__main__":
     agent = create_chat_agent()
-    
-    # Test the agent with a sample query
     print("\n--- Testing General Questions ---\n")
     response = agent.invoke({"input": "Hello! Can you tell me a joke about computers?"})
     print("Response:", response.content)
