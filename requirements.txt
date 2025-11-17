@@ -1,12 +1,11 @@
 fastapi==0.104.1
 uvicorn==0.24.0
-pydantic==2.5.0
 
-# LangChain
+# Pydantic must be >= 2.7.4 for langchain 1.0.7
+pydantic==2.7.4
+
 langchain==1.0.7
 langchain-google-genai==3.0.3
-
-# Remove google-generativeai — CONFLICTS with langchain-google-genai
 
 python-dotenv==1.0.0
 pymongo==4.6.0
