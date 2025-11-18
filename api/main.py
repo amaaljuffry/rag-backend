@@ -41,6 +41,11 @@ async def health_check():
     """Health check endpoint"""
     return {"status": "ok", "message": "RAG Chat API is running"}
 
+@app.get("/")
+async def root():
+    return {"message": "RAG Chat API is running"}
+
+
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(chat_message: ChatMessage):
     """Chat endpoint"""
