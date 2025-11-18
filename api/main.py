@@ -49,6 +49,7 @@ async def root():
 
 
 @app.post("/api/chat", response_model=ChatResponse)
+@app.post("/api/chat/", response_model=ChatResponse)  # optional, allows trailing slash
 async def chat(chat_message: ChatMessage):
     """Chat endpoint"""
     try:
