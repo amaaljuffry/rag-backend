@@ -21,7 +21,7 @@ app.add_middleware(
         "http://127.0.0.1:3000",
         "http://localhost:5173",
         "https://petai-frontend.netlify.app",
-        "https://petai.ama24.my/",
+        "https://petai.ama24.my",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -58,5 +58,7 @@ async def chat(chat_message: ChatMessage):
     except Exception as e:
         return ChatResponse(response="", error=str(e))
 
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
