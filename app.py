@@ -19,12 +19,13 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://petai.ama24.my/",
+        "https://petai.ama24.my",  # Remove trailing slash
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Initialize chat agent
 chat_agent = create_chat_agent()
